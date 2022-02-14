@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header :: header" />
+<body>
+    <h1>폰 수정</h1>
+    <form method="post" action="" th:object="${phone}">
+        <input type="hidden" name="id" th:field="*{id}" />
+        <label for="name">이름:</label>
+        <input type="text" name="name" id="name" th:field="*{name}" /> <br/>
+        <label for="name">가격:</label>
+        <input type="text" name="price" id="price" th:field="*{price}" /> <br/>
+        <input type="submit" value="수정" name="update" />
+        <input type="submit" value="삭제" name="delete" />
+    </form>
+    <footer>
+        <div th:include="fragments/footer :: footer" />
+    </footer>
+</body>
+</html>
