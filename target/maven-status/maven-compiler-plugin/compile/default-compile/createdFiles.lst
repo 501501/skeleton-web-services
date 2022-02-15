@@ -1,0 +1,5 @@
+com\oraclejava\dao\PhoneRepository.class
+com\oraclejava\Application.class
+com\oraclejava\controller\HelloController.class
+com\oraclejava\controller\PhoneController.class
+com\oraclejava\model\Phone.class

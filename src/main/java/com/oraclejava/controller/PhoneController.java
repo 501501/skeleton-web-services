@@ -1,14 +1,12 @@
 package com.oraclejava.controller;
 
+import com.oraclejava.dao.PhonePredicate;
 import com.oraclejava.dao.PhoneRepository;
 import com.oraclejava.model.Phone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +17,9 @@ public class PhoneController {
     private PhoneRepository phoneRepository;
 
     @RequestMapping(value = "api/phones", method = RequestMethod.GET)
-    public ResponseEntity<List<Phone>> getPhones() {
-        List<Phone> phones = (List<Phone>) phoneRepository.findAll();
+    public ResponseEntity<List<Phone>> getPhones(@RequestParam String name) {
+        // List<Phone> phones = (List<Phone>) phoneRepository.findByNameContaining(name);
+        List<Phone> phones = (List<Phone>) phoneRepository.findAll(PhonePredicate.search(name));
         return new ResponseEntity<>(phones, HttpStatus.OK);
     }
 }
